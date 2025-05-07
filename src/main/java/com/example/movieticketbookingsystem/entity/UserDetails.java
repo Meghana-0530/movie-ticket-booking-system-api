@@ -4,8 +4,10 @@ import com.example.movieticketbookingsystem.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDate;
+
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Setter
@@ -25,4 +27,4 @@ public class UserDetails {
         private long createdAt;
         private long updatedAt;
 
-    }
+}
