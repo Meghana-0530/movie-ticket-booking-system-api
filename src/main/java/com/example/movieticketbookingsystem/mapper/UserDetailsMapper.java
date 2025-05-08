@@ -37,27 +37,43 @@ import java.time.Instant;
 //    }
 //}
 
+//@Component
+//public class UserDetailsMapper {
+//    private UserDetailsMapper() {} // Utility class
+////
+//    public static UserDetails mapFromDTO(UserResponse dto) {
+//        UserDetails user = switch (dto.userRole()) {
+//            case USER -> new User();
+//            case THEATER_OWNER -> new TheaterOwner();
+//        };
+//
+//        user.setUsername(dto.username());
+//        user.setEmail(dto.email());
+////        user.setPassword(dto.password()); // Hash later
+//        user.setPhoneNumber(dto.phoneNumber());
+//        user.setDateOfBirth(dto.dateOfBirth());
+//        user.setUserRole(dto.userRole());
+//
+//        long now = Instant.now().toEpochMilli();
+//        user.setCreatedAt(now);
+//        user.setUpdatedAt(now);
+//
+//        return user;
+//}
+//}
 @Component
 public class UserDetailsMapper {
-    private UserDetailsMapper() {} // Utility class
-
-    public static UserDetails mapFromDTO(UserResponse dto) {
-        UserDetails user = switch (dto.userRole()) {
-            case USER -> new User();
-            case THEATER_OWNER -> new TheaterOwner();
-        };
-
-        user.setUsername(dto.username());
-        user.setEmail(dto.email());
-//        user.setPassword(dto.password()); // Hash later
-        user.setPhoneNumber(dto.phoneNumber());
-        user.setDateOfBirth(dto.dateOfBirth());
-        user.setUserRole(dto.userRole());
-
-        long now = Instant.now().toEpochMilli();
-        user.setCreatedAt(now);
-        user.setUpdatedAt(now);
-
-        return user;
+    public UserResponse userDetailsResponseMapper(UserDetails userDetails){
+        if(userDetails == null)
+            return null;
+        return new UserResponse(
+                //  userDetails.getUserId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                userDetails.getPhoneNumber(),
+                userDetails.getDateOfBirth(),
+                userDetails.getUserRole()
+        );
     }
+
 }

@@ -1,4 +1,3 @@
-
 package com.example.movieticketbookingsystem.util;
 
 import lombok.Builder;
