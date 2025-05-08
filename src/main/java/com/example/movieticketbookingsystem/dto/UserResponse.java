@@ -1,4 +1,3 @@
-
 package com.example.movieticketbookingsystem.dto;
 
 import com.example.movieticketbookingsystem.enums.UserRole;

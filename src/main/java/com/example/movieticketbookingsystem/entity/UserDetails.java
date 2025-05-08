@@ -4,18 +4,24 @@ import com.example.movieticketbookingsystem.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Setter
 @Getter
+@ToString
+@EntityListeners(AuditingEntityListener.class)
 public class UserDetails {
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
-        private  String userId;
+        private String userId;
         private String username;
         @Column(unique = true)
         private String email;
@@ -24,7 +30,12 @@ public class UserDetails {
         @Enumerated(value = EnumType.STRING)
         private UserRole userRole;
         private LocalDate dateOfBirth;
-        private long createdAt;
-        private long updatedAt;
+        private boolean isDelete;
+        private Instant deletedAt;
+
+        @CreatedDate
+        private Instant createdAt;
+        @LastModifiedDate
+        private Instant updatedAt;
 
 }

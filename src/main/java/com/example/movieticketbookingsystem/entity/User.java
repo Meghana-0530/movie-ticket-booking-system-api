@@ -1,4 +1,3 @@
-
 package com.example.movieticketbookingsystem.entity;
 
 import jakarta.persistence.Entity;

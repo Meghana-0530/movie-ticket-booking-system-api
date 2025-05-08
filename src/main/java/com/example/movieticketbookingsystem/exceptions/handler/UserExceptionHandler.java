@@ -1,6 +1,7 @@
 package com.example.movieticketbookingsystem.exceptions.handler;
 
 import com.example.movieticketbookingsystem.exceptions.UserExistByEmailException;
+import com.example.movieticketbookingsystem.exceptions.UserNotFoundByEmailException;
 import com.example.movieticketbookingsystem.util.ErrorStructure;
 import com.example.movieticketbookingsystem.util.RestResponseBuilder;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,11 @@ public class UserExceptionHandler {
     public ResponseEntity<ErrorStructure> handleUseExistByEmailException(UserExistByEmailException ex){
         return  responseBuilder.errror(HttpStatus.OK, ex.getMessage());
     }
+    @ExceptionHandler
+    public ResponseEntity<ErrorStructure> handleUserNotFoundByEmailException(UserNotFoundByEmailException ex){
+        return responseBuilder.errror(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+
 
 }
