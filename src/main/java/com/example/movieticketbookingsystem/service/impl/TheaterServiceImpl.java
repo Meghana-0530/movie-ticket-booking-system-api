@@ -33,11 +33,14 @@ public class TheaterServiceImpl implements TheaterService {
     }
 
     private Theater copy(TheaterRegistrationRequest registerationRequest, Theater theater , UserDetails userDetails){
+
+
         theater.setAddress(registerationRequest.address());
         theater.setCity(registerationRequest.city());
         theater.setName(registerationRequest.name());
         theater.setLandmark(registerationRequest.landmark());
         theater.setTheaterOwner((TheaterOwner) userDetails);
+        theaterRepository.save(theater);
         return theater;
     }
 }
